@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 const Curanet = () => {
   const [posts, setPosts] = useState([
@@ -20,6 +22,7 @@ const Curanet = () => {
       ],
       likes: 5,
       showComments: false,
+      liked: false,
     },
     {
       id: 2,
@@ -34,6 +37,7 @@ const Curanet = () => {
       ],
       likes: 3,
       showComments: false,
+      liked: false,
     },
     {
       id: 3,
@@ -54,6 +58,7 @@ const Curanet = () => {
       ],
       likes: 8,
       showComments: false,
+      liked: false,
     },
   ]);
 
@@ -72,7 +77,13 @@ const Curanet = () => {
   const addLike = (postId) => {
     setPosts((prevPosts) =>
       prevPosts.map((post) =>
-        post.id === postId ? { ...post, likes: post.likes + 1 } : post
+        post.id === postId
+          ? {
+              ...post,
+              likes: post.likes + (post.liked ? -1 : 1),
+              liked: !post.liked,
+            }
+          : post
       )
     );
   };
@@ -106,6 +117,7 @@ const Curanet = () => {
         comments: [],
         likes: 0,
         showComments: false,
+        liked: false,
       };
       setPosts([newDiscussion, ...posts]);
       setNewPost({ author: "", content: "" });
@@ -151,18 +163,19 @@ const Curanet = () => {
           <div className="flex gap-4">
             <button
               onClick={() => addLike(post.id)}
-              className="text-blue-500 hover:text-blue-600"
+              className={`px-4 py-1 rounded transition duration-200 ${
+                post.liked ? "bg-blue-100 text-blue-600" : "text-gray-500"
+              }`}
             >
-              👍 Like {post.likes}
+              {" "}
+              <ThumbUpOffAltIcon />
+              {post.likes}
             </button>
             <button
               onClick={() => toggleComments(post.id)}
-              className="text-blue-500 hover:text-blue-600"
+              className="text-gray-500 hover:text-blue-500 transition duration-200"
             >
-              💬 Comment
-            </button>
-            <button className="text-blue-500 hover:text-blue-600">
-              🔗 Share
+              <ChatBubbleOutlineIcon />
             </button>
           </div>
           {post.showComments && (
@@ -179,7 +192,7 @@ const Curanet = () => {
                   placeholder="Add a comment..."
                   className="flex-grow border p-2 rounded"
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === "Enter" && e.target.value) {
                       addComment(post.id, e.target.value);
                       e.target.value = "";
                     }

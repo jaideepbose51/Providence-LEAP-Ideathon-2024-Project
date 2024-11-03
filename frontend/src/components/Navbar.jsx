@@ -60,6 +60,7 @@ const Navbar = () => {
           <li className="py-1">SPONSORS</li>
           <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
+        <hr />
       </ul>
       <div className="flex items-center gap-4">
         {token ? (
@@ -169,6 +170,56 @@ const Navbar = () => {
                 }}
               >
                 CONTACT
+              </p>
+            </NavLink>
+            <NavLink to={"/curanet"}>
+              <p
+                className={`px-4 py-2 rounded inline-block `}
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                CURANET
+              </p>
+            </NavLink>
+            <NavLink to={"/healtheducation"}>
+              <p
+                className={`px-4 py-2 rounded inline-block `}
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                DOCS
+              </p>
+            </NavLink>
+            <NavLink to={"/ehr"}>
+              <p
+                className={`px-4 py-2 rounded inline-block `}
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                EHR
+              </p>
+            </NavLink>
+            <NavLink to={"/healthaccess"}>
+              <p
+                className={`px-4 py-2 rounded inline-block `}
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                CARELINK
+              </p>
+            </NavLink>
+            <NavLink to={"/sponsors"}>
+              <p
+                className={`px-4 py-2 rounded inline-block `}
+                onClick={() => {
+                  setShowMenu(false);
+                }}
+              >
+                SPONSORS
               </p>
             </NavLink>
           </ul>

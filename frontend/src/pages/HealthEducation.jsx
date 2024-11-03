@@ -3,7 +3,9 @@ import React, { useState } from "react";
 const HealthEducation = () => {
   const [language, setLanguage] = useState("English"); // Language selection
   const [offlineMode, setOfflineMode] = useState(false); // Offline toggle
+  const [quizActive, setQuizActive] = useState(false); // Toggle for quizzes
 
+  // Example topics, can be expanded with more detailed or localized content
   const topics = [
     {
       id: 1,
@@ -12,7 +14,7 @@ const HealthEducation = () => {
         video: "/videos/hygiene.mp4",
         article:
           "Good hygiene practices can prevent diseases. Always wash your hands...",
-        interactive: "Quiz on hygiene practices...",
+        interactive: "Take a quiz on hygiene practices...",
       },
     },
     {
@@ -39,8 +41,10 @@ const HealthEducation = () => {
 
   const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
-    // Fetch content in the selected language
+    // Placeholder: Fetch content in the selected language
   };
+
+  const toggleQuiz = () => setQuizActive(!quizActive);
 
   return (
     <div className="p-4 mx-auto max-w-3xl text-gray-800">
@@ -60,7 +64,6 @@ const HealthEducation = () => {
           <option>Hindi</option>
           <option>Marathi</option>
           <option>Kannada</option>
-          {/* Add more languages as needed */}
         </select>
       </div>
 
@@ -83,12 +86,14 @@ const HealthEducation = () => {
           <div className="mb-4">
             <h4 className="font-semibold text-sm mb-1">Educational Video</h4>
             {offlineMode ? (
-              <p>Video unavailable in offline mode</p>
+              <p className="text-red-600">Video unavailable in offline mode</p>
             ) : (
-              <video
-                src={topic.content.video}
-                controls
+              <iframe
+                src="https://www.youtube.com/embed/lD6XbqaQkB0"
+                title="Educational Video"
                 className="w-full rounded"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
             )}
           </div>
@@ -102,7 +107,32 @@ const HealthEducation = () => {
           {/* Interactive Content */}
           <div>
             <h4 className="font-semibold text-sm mb-1">Interactive Content</h4>
-            <p>{topic.content.interactive}</p>
+            <p
+              className="text-blue-600 underline cursor-pointer"
+              onClick={toggleQuiz}
+            >
+              {quizActive ? "Close Quiz" : topic.content.interactive}
+            </p>
+            {quizActive && (
+              <div className="mt-4 p-2 border rounded-lg bg-gray-50">
+                <p>1. How often should you wash your hands?</p>
+                <ul>
+                  <li>
+                    <input type="radio" name="quiz1" /> After meals
+                  </li>
+                  <li>
+                    <input type="radio" name="quiz1" /> Every hour
+                  </li>
+                  <li>
+                    <input type="radio" name="quiz1" /> After using the bathroom
+                  </li>
+                </ul>
+                {/* Add more questions as desired */}
+                <button className="mt-4 p-2 bg-blue-600 text-white rounded">
+                  Submit Answers
+                </button>
+              </div>
+            )}
           </div>
         </div>
       ))}

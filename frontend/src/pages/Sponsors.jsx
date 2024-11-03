@@ -21,7 +21,7 @@ const CareLink = () => {
   return (
     <div className="p-4 mx-auto max-w-3xl text-gray-800">
       <h2 className="text-center text-3xl font-semibold py-6 text-gray-700">
-        CareLink: Sponsored Healthcare Programs
+        Sponsored Healthcare Programs
       </h2>
 
       {/* Program Scheduling Form */}
@@ -112,8 +112,8 @@ const CareLink = () => {
       {/* CSR Note */}
       <div className="mt-6 text-gray-500 text-xs">
         <p>
-          Through CareLink, Providence partners with local governments and NGOs
-          to sponsor health programs, contributing to community health and
+          Through Healthconnect, Providence partners with local governments and
+          NGOs to sponsor health programs, contributing to community health and
           well-being.
         </p>
       </div>

@@ -9,10 +9,17 @@ const Footer = () => {
         <div>
           <img className="mb-5 w-40" src={assets.logo} alt="" />
           <p className="w-full md:w-2/3 text-gray-600 leading-6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-            doloribus nisi ullam, placeat quam nihil amet accusantium provident
-            obcaecati quo minus alias hic tempore eaque molestias! Accusamus
-            laudantium consequatur velit deserunt rem!
+            Healthconnect is dedicated to bridging healthcare gaps in
+            underserved communities by providing access to essential health
+            services at little to no cost. Through partnerships with local
+            governments and NGOs, we address critical health issues, including
+            maternal care, chronic illness management, and malnutrition. Our
+            platform empowers communities by organizing health camps, mobile
+            clinics, and vaccination drives, making healthcare more accessible
+            and improving quality of life. By sponsoring these initiatives,
+            Providence not only enhances public health but also fosters
+            long-term relationships, building a foundation for a healthier
+            future for all.
           </p>
         </div>
         {/*center section*/}
@@ -29,8 +36,8 @@ const Footer = () => {
         <div>
           <p className="text-xl font-medium mb-5">GET IN TOUCH</p>
           <ul className="flex flex-col gap-2 text-gray-600">
-            <li>+1234567899</li>
-            <li>Sanjeev@gmail.com</li>
+            <li>+0123456789</li>
+            <li>TheVerse@gmail.com</li>
           </ul>
         </div>
       </div>
